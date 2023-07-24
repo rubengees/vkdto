@@ -21,6 +21,14 @@
  * IN THE SOFTWARE.
  */
 
+#if defined(__GNUC__) && __GNUC__ >= 4
+#define VK_LAYER_EXPORT __attribute__((visibility("default")))
+#elif defined(__SUNPRO_C) && (__SUNPRO_C >= 0x590)
+#define VK_LAYER_EXPORT __attribute__((visibility("default")))
+#else
+#define VK_LAYER_EXPORT
+#endif
+
 #include <string.h>
 #include <stdlib.h>
 #include <assert.h>
